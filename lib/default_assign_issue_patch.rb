@@ -20,7 +20,7 @@ module DefaultAssignIssuePatch
     # If the issue isn't assigned to someone and a default assignee
     # is set, set it.
     def assign_default_assignee
-        self.assigned_to_id ||= @project.default_assignee_id
+        self.assigned_to_id = @project.default_assignee_id if self.assigned_to_id.nil? && !@project.nil?
     end
   end
 end
